@@ -80,6 +80,9 @@ def create_ad_hoc_field(cls, db_type):
     if db_type.startswith('FixedString'):
         db_type = 'String'
     # Simple fields
+    # drop Nullable if needed
+    if 'Nullable' in db_type:
+        db_type = db_type[9:-1]
     name = db_type + 'Field'
     if not hasattr(orm_fields, name):
         raise NotImplementedError('No field class for %s' % db_type)
