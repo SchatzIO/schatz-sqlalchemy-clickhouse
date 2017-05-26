@@ -32,7 +32,7 @@ ischema_names = {
     'Int32': INTEGER,
     'Int16': INTEGER,
     'Int8': INTEGER,
-    'UInt64': INTEGER,
+    'UInt64': BIGINT,
     'UInt32': INTEGER,
     'UInt16': INTEGER,
     'UInt8': INTEGER,
