@@ -32,12 +32,12 @@ ischema_names = {
     'Int32': INTEGER,
     'Int16': INTEGER,
     'Int8': INTEGER,
-    'UInt64': INTEGER,
+    'UInt64': BIGINT,
     'UInt32': INTEGER,
     'UInt16': INTEGER,
     'UInt8': INTEGER,
     'Date': DATE,
-    'DateTime': DATETIME,
+    'DateTime': TIMESTAMP,
     'Float64': FLOAT,
     'Float32': FLOAT,
     'String': VARCHAR,
@@ -223,7 +223,12 @@ class ClickHouseDialect(default.DefaultDialect):
             # e.g. 'map<int,int>' -> 'map'
             #      'decimal(10,1)' -> decimal
             col_name = r.name
-            col_type = re.search(r'^\w+', r.type).group(0)
+            ctype = r.type
+            nullable = True
+            if 'Nullable' in ctype:
+                ctype = ctype[9:-1]
+                nullable = False
+            col_type = re.search(r'^\w+', ctype).group(0)
             try:
                 coltype = ischema_names[col_type]
             except KeyError:
@@ -231,7 +236,7 @@ class ClickHouseDialect(default.DefaultDialect):
             result.append({
                 'name': col_name,
                 'type': coltype,
-                'nullable': True,
+                'nullable': nullable,
                 'default': None,
             })
         return result
