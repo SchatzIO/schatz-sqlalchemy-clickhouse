@@ -6,15 +6,12 @@
 import re
 
 import sqlalchemy.types as sqltypes
-from sqlalchemy import exc as sa_exc
 from sqlalchemy import util as sa_util
 from sqlalchemy.engine import default, reflection
-from sqlalchemy.sql import compiler, expression
-from sqlalchemy.sql.elements import quoted_name
+from sqlalchemy.sql import compiler
 from sqlalchemy.dialects.postgresql.base import PGCompiler, PGIdentifierPreparer
 from sqlalchemy.types import (
-    CHAR, DATE, DATETIME, INTEGER, SMALLINT, BIGINT, DECIMAL, TIME,
-    TIMESTAMP, VARCHAR, BINARY, BOOLEAN, FLOAT, REAL)
+    DATE, INTEGER, BIGINT, TIMESTAMP, VARCHAR, FLOAT)
 
 # Export connector version
 VERSION = (0, 1, 0, None)
@@ -178,7 +175,7 @@ class ClickHouseDialect(default.DefaultDialect):
     @classmethod
     def dbapi(cls):
         try:
-            import sqlalchemy_clickhouse.connector as connector
+            import schatz_sqlalchemy_clickhouse.connector as connector
         except:
             import connector
         return connector

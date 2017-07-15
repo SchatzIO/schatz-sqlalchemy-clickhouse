@@ -1,0 +1,5 @@
+dist/
+schatz_sqlalchemy_clickhouse.egg-info/
+.idea/
+*.iml
+*~

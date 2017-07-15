@@ -1,42 +1,40 @@
 #!/usr/bin/env python
 
-from os import path, getenv
 from setuptools import setup
 from codecs import open
 
-VERSION = [0, 1, 2]
+VERSION = [0, 0, 2]
 readme = open('README.rst').read()
 
 setup(
-    name='sqlalchemy-clickhouse',
+    name='schatz-sqlalchemy-clickhouse',
     version='.'.join('%d' % v for v in VERSION[0:3]) + "-3",
-    description='ClickHouse SQLAlchemy Dialect',
-    long_description = readme,
-    author = 'Cloudflare, Inc.',
-    author_email = 'mvavrusa@cloudflare.com',
-    license = 'Apache License, Version 2.0',
-    url = 'https://github.com/cloudflare/sqlalchemy-clickhouse',
-    keywords = "db database cloud analytics clickhouse",
-    download_url = 'https://github.com/cloudflare/sqlalchemy-clickhouse/releases/tag/v0.1',
-    install_requires = [
+    description='ClickHouse SQLAlchemy Dialect for Schatz Platform',
+    long_description=readme,
+    author='Cloudflare, Inc.',
+    author_email='mvavrusa@cloudflare.com',
+    license='Apache License, Version 2.0',
+    url='https://github.com/SchatzIO/sqlalchemy-clickhouse',
+    keywords="db database cloud analytics clickhouse",
+    install_requires=[
         'sqlalchemy>=1.0.0',
         'infi.clickhouse_orm>=0.7.1'
     ],
     packages=[
-        'sqlalchemy_clickhouse',
+        'schatz_sqlalchemy_clickhouse',
     ],
     package_dir={
-        'sqlalchemy_clickhouse': '.',
+        'schatz_sqlalchemy_clickhouse': '.',
     },
     package_data={
-        'sqlalchemy_clickhouse': ['LICENSE.txt'],
+        'schatz_sqlalchemy_clickhouse': ['LICENSE.txt'],
     },
     entry_points={
         'sqlalchemy.dialects': [
-            'clickhouse=sqlalchemy_clickhouse.base',
+            'clickhouse=schatz_sqlalchemy_clickhouse.base',
         ]
     },
-    classifiers = [
+    classifiers=[
         'Development Status :: 5 - Production/Stable',
 
         'Environment :: Console',

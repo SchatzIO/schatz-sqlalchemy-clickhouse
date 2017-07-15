@@ -1,14 +1,14 @@
-sqlalchemy-clickhouse
+schatz-sqlalchemy-clickhouse
 =====================
 
-ClickHouse dialect for SQLAlchemy.
+ClickHouse dialect for SQLAlchemy used on Schatz Platform.
 
 Installation
 ------------
 
 The package is installable through PIP::
 
-   pip install sqlalchemy-clickhouse
+   pip install schatz-sqlalchemy-clickhouse
 
 Usage
 -----
